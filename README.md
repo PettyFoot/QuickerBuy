@@ -1,0 +1,2 @@
+# QuickerBuy
+E commerce platform 
