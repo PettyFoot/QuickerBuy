@@ -1,12 +1,12 @@
 "use client";
 
 import * as z from "zod";
-import {Form, useForm} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { useStoreModal } from "@/hooks/use-store-modal";
 import { Modal } from "@/components/ui/modal";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { FormControl, FormField, FormItem, FormLabel, Form, FormMessage  } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
@@ -52,7 +52,7 @@ export const StoreModal =  () => {
                                 </FormControl>
                             </FormItem>
                         )}/>
-                        <div className="pt-6 space-x-2 items-center justify-left w-screen">
+                        <div className="pt-6 space-x-2 items-center justify-left w-full">
                             <Button variant={"outline"} onClick={storeModal.onClose}>Cancel</Button>
                             <Button type="submit">Continue</Button>
                         </div>
