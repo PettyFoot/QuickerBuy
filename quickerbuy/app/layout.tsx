@@ -3,8 +3,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 
-import { ModalProvider } from '@/providers/file-provider'
 
+import { ModalProvider } from '@/providers/file-provider'
+import prismadb from "@/lib/prismadb"
 import './globals.css'
 
 
@@ -20,6 +21,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <ClerkProvider>
       <html lang="en">

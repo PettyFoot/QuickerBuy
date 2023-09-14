@@ -2,6 +2,7 @@
 
 import * as z from "zod";
 import {useForm} from "react-hook-form";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { useStoreModal } from "@/hooks/use-store-modal";
@@ -10,6 +11,7 @@ import { FormControl, FormField, FormItem, FormLabel, Form, FormMessage  } from 
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
+
 const formSchema = z.object({
     name: z.string().min(1),
 });
@@ -17,6 +19,8 @@ const formSchema = z.object({
 
 export const StoreModal =  () => {
     const storeModal = useStoreModal();
+
+    const [loading, setLoading] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -48,13 +52,13 @@ export const StoreModal =  () => {
                             <FormItem>
                                 <FormLabel>Name</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="E-com" {...field}/>
+                                    <Input placeholder="E-com" disabled={loading} {...field}/>
                                 </FormControl>
                             </FormItem>
                         )}/>
                         <div className="pt-6 space-x-2 items-center justify-left w-full">
-                            <Button variant={"outline"} onClick={storeModal.onClose}>Cancel</Button>
-                            <Button type="submit">Continue</Button>
+                            <Button disabled={loading} variant={"outline"} onClick={storeModal.onClose}>Cancel</Button>
+                            <Button disabled={loading} type="submit">Continue</Button>
                         </div>
                     </form>
                 </Form>
